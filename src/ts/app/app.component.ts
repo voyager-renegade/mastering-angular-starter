@@ -13,11 +13,11 @@ import { Component } from "@angular/core";
             </div>
             <button type="button" (click)="addColor()">Add Color</button>
         </form>
-        <ul>
-        <li *ngFor="let color of colors">            
-            {{color}}
-        </li>
-    </ul>
+        <ol>
+            <li *ngFor="let color of colors">            
+                {{color}}
+            </li>
+        </ol>
     </div>
     `,
 })
