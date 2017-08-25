@@ -1,5 +1,6 @@
 <h1>{{header}}</h1>
 <div>
+    <span>{{ 34.1599 | currency }}</span>
     <form>
         <div>
             <label for="new-color-input">New Color:</label>
@@ -11,7 +12,7 @@
     </form>
     <ul>
         <li *ngFor="let color of colors">            
-            {{color}}
+            {{color | uppercase}}
         </li>
     </ul>
 </div>
