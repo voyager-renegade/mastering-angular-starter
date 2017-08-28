@@ -18,16 +18,28 @@ import { Component } from "@angular/core";
         </tbody>
     </table>
 
-    <button type="button" (click)="prevPage()">Prev</button>
+    <button #prevButton type="button" (click)="prevPage()">Prev</button>
     <button type="button" (click)="nextPage()">Next</button>
-    <span> startPerson: {{startPerson}}  </span>
-    <span> endPerson: {{endPerson}}  </span>
+
+    <!--    
+    <div> {{prevButton.parentNode.innerHTML | json}} </div>
+    -->
+    
+    <!--
+    <br><br>
+    <br><span> pages: {{pages}}  </span>
+    <br><span> currentPage: {{currentPage}}  </span>
+    <br><span> startPerson: {{startPerson}}  </span>
+    <br><span> endPerson: {{endPerson}}  </span>
+    -->
     `,
 })
 export class PipeFormatDemoComponent {
 
     public currentPage: number = 0;
     public pageLength: number = 3;
+
+
 
     public get startPerson(): number {
         return this.currentPage * this.pageLength;
@@ -49,6 +61,8 @@ export class PipeFormatDemoComponent {
         { fn: "Bob", ln: "Simons"},
     ]
 
+    public pages: number = Math.floor(this.people.length / this.pageLength);
+
     public prevPage(): void {
         if (this.currentPage>0) {
             this.currentPage--;
@@ -57,13 +71,16 @@ export class PipeFormatDemoComponent {
 
     public nextPage(): void {
 
-        let pages: number = this.people.length / this.pageLength;
+        let pages: number = this.pages;
         if (this.people.length % this.pageLength >0) {
             pages++;            
         }
 
         if (this.currentPage < pages ) {
-            this.currentPage++;
+            if (this.endPerson < this.people.length) {
+                this.currentPage++;
+            }
+            
         }
     }
 
