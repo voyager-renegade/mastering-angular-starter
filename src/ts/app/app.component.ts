@@ -5,14 +5,19 @@ import { Component } from "@angular/core";
     template: `
     <div>
         <span>{{message | uppercase}}</span><br>
-        <span>{{message | lowercase}}</span><br><br>
+        <span>{{message | lowercase}}</span><br>
+        <span>{{message2 | capitalize}}</span><br>
+        <br>
 
         <input type="text" [(ngModel)]="message">
+        <input type="text" [(ngModel)]="message2">
     </div>
     `,
 })
 export class AppComponent {
 
-    public message: string = "Hello World!";
+    public message: string = "Hello";
+    public message2: string = "World!";
 
 }
+
